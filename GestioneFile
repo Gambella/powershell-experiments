@@ -1,0 +1,21 @@
+# Partendo da una directory già esistente, copiare i file al suo interno in un'altra cartella
+# aggiungendo un numero ordinale davanti.
+
+$DirSorg = $args[0] #viene assegnato 0 come valore di riga di comando
+$DirDest = $args[1] #viene assegnato 1 come valore di riga di comando
+
+new-item $DirSorg -itemtype directory  #crea una nuova directory con il nome $DirSorg
+
+$contatore = 0 #dichiara una variabile contatore uguale a 0
+
+
+foreach ($file in Get-Childitem C:\Users\nicholas.gambella\Desktop\$DirSorg) 
+#assegna alla variabile file tutti i valori elencati in Get-ChildItem 
+{
+	$contatore ++ #incrementa la variabile contatore
+	
+	copy-item C:\Users\nicholas.gambella\Desktop\powershell-experiments\*.ps1 C:\Users\nicholas.gambella\Desktop\$DirDest 
+        #copia i file della directory sorgente alla directory di destinazione
+
+	#rename-item C:\Users\nicholas.gambella\Desktop\CopiaDeiFile #cambia il nome di un file o di una directory
+}
